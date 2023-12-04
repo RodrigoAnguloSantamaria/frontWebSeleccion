@@ -1,0 +1,63 @@
+<div *ngIf="isLoad">
+    <div class="filter-container">
+        <h3>TEAMS FILTER</h3>
+        <section class="filters">
+            <label for="nameFilter">
+                Name
+                <input type="text" #name id="nameFilter" (input)="nameFilter($event)" />
+            </label>
+            <!-- <label for="height">
+          Max. height
+          <input
+            id="height"
+            type="range"
+            max="250"
+            min="150"
+            value="250"
+            #height
+            (input)="heightFilter($event)"
+          /><span>{{ heightSelected }}cms</span>
+        </label>
+        <select name="team" #team (change)="teamFilter($event)">
+          <option value="">Team</option>
+          <option value="Espana">España</option>
+          <option value="Ninguno">Ninguno</option>
+        </select>
+        <select name="position" #position (change)="positionFilter($event)">
+          <option value="">Position</option>
+          <option value="Point Guard">Point Guard</option>
+          <option value="Point Forward">Point Forward</option>
+          <option value="Small Forward">Small Forward</option>
+          <option value="Power Forward">Power Forward</option>
+          <option value="Center">Center</option>
+        </select>
+      </section>
+      <aside class="filters-aside">
+        <button (click)="resetFilters()">Reset filters</button>
+        <span *ngIf="filteredTeams"
+          ><mark>Teams found:</mark
+          ><strong> {{ filteredTeams.length }}</strong></span
+        >
+      </aside> -->
+        </section>
+    </div>
+    <ul>
+
+        <li *ngFor="let team of filteredTeams">
+            <section>
+                <p>
+                    <span>Rank: {{ team.ranking }}</span>{{ team.name }}
+                </p>
+                <img src="{{ team.flag }}" alt="foto de la bandera de  {{ team.name }}" />
+            </section>
+            <aside>
+                <button mat-icon-button color="basic" (click)="editTeam(team)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="basic" (click)="deleteTeam(team)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </aside>
+        </li>
+    </ul>
+</div>

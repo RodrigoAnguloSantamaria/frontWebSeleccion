@@ -1,0 +1,72 @@
+<div class="container">
+  <form [formGroup]="teamForm" (ngSubmit)="submitForm()">
+    <div class="formitems">
+      <div class="formfields">
+        <label for="name">Team Name
+          <span *ngIf="submitted && teamForm.get('name')?.hasError('required')">
+            Este campo es requerido
+          </span>
+          <span *ngIf="submitted && teamForm?.get('name')?.hasError('minlength')">
+            Este campo tiene que tener más de 3 caracteres
+          </span>
+        </label>
+        <input type="text" id="name" name="name" formControlName="name" />
+
+        <label for="flag">Flag
+          <span *ngIf="submitted && sizeImage">
+            El archivo no puede ocupar mas de 2 MB
+          </span>
+          <span *ngIf="submitted && typeImage">
+            El archivo tiene que ser una imagen
+          </span>
+        </label>
+        <input type="file" id="flag" name="flag" formControlName="flag" (change)="handleInputFile($event)" />
+
+        <label for="ranking">Ranking
+          <span *ngIf="submitted && teamForm.get('ranking')?.hasError('required')">
+            Este campo es requerido
+          </span>
+          <span *ngIf="submitted && teamForm?.get('ranking')?.hasError('min')">
+            Este campo tiene que ser mayor que 0
+          </span>
+        </label>
+
+        <input type="number" id="ranking" name="ranking" formControlName="ranking" />
+      </div>
+      <img src="{{ previewSrc ? previewSrc : team.flag }}" alt="flag of country we are creating" />
+    </div>
+    <h5>Palmares</h5>
+    <section>
+      <mat-icon class="add-row" (click)="addChampionships()">add</mat-icon>
+
+      <ul class="palmares-head">
+        <li>Tournament</li>
+        <li>Position</li>
+        <li>Year</li>
+      </ul>
+    </section>
+    <ng-container formArrayName="championships">
+      <ng-container *ngFor="let championship of championships.controls; let i = index">
+        <div [formGroupName]="i" class="palmares-row">
+          <!-- The repeated  template -->
+
+          <select id="tournament" name="tournament" formControlName="tournament">
+            <option value="" selected>Tournament</option>
+            <option value="Olimpic Games">Olimpic Games</option>
+            <option value="World Championship">World championship</option>
+            <option value="Eurobasket">Eurobasket</option>
+            <option value="Panamerican Games">Panamerican Games</option>
+            <option value="Afrobasket">Afrobasket</option>
+            <option value="Fiba Asia">Fiba Asia</option>
+          </select>
+
+          <input id="position" type="number" formControlName="position" placeholder="position" />
+
+          <input id="year" type="number" formControlName="year" placeholder="year" />
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <button class="submit">{{ _id ? "Actualizar" : "Crear" }}</button>
+  </form>
+</div>

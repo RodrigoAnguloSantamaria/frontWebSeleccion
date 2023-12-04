@@ -1,0 +1,21 @@
+nav{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: red;
+    height: 50px;
+   
+    
+    
+    & ul{
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        height: 50px;
+       
+    }
+    
+}

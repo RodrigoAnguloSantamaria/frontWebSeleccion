@@ -1,0 +1,32 @@
+<div class="dashboard">
+  <!-- <ul>
+    <a routerLink="addplayer/"><li>addplayer</li></a>
+    <a routerLink="addgame/"><li>addgame</li></a>
+  </ul> -->
+  <div class="menu">
+    <button mat-button [matMenuTriggerFor]="players" (click)="resetPlayerData()">
+      Players
+    </button>
+    <mat-menu #players="matMenu" yPosition="below" xPosition="after">
+      <button mat-menu-item routerLink="listplayer">List players</button>
+
+      <button mat-menu-item routerLink="addplayer">Add player</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="teams" (click)="resetPlayerData()">Teams</button>
+    <mat-menu #teams="matMenu" yPosition="below">
+      <button mat-menu-item routerLink="listteam">List Teams</button>
+
+      <button mat-menu-item routerLink="addteam">Add team</button>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="games" (click)="resetPlayerData()">Games</button>
+    <mat-menu #games="matMenu" yPosition="below">
+      <button mat-menu-item routerLink="listgame">List Games</button>
+
+      <button mat-menu-item routerLink="addgame">Add Game</button>
+    </mat-menu>
+  </div>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

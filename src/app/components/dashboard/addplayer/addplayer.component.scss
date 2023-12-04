@@ -1,0 +1,94 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    & form{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        place-items: center;
+        & label{
+            margin-top: 10px;
+        }
+        & label,input,select{
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: baseline;
+            
+            & span{
+                font-size: 10px;
+                color: red;
+                
+            }
+            
+            
+        }
+        & button{
+            background-color: rgb(109, 122, 241);
+            color: white;
+            border: 2px solid black;
+            border-radius: 20px;
+            margin: 10px;
+            height: 30px;
+            box-shadow: 0px 5px 10px black;
+        }
+        & button:hover{
+            border: 2px solid rgb(109, 122, 241);
+            cursor: pointer;
+        }
+        & .errorAlert{
+            background-color: rgb(90, 87, 87);
+            color: white;
+            border-top-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 2px;
+            font-size: small;
+            position: absolute;
+            bottom: 50%;
+            right: 50%;
+            width: 150px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+    }
+    & .preview{
+        
+        border: 1px solid gray;
+        padding: 10px;
+        & h2{
+            width: 100%;
+            text-align: center;
+            margin: 0px;
+        }
+        & h5{
+            margin: 10px 0px;
+        }
+       
+        .preview__img{
+            display: flex;
+           justify-content: space-between;
+           & img{
+            margin-top: 10px;
+            width: 150px;
+            height: 200px;
+            border-radius: 2rem;
+           }
+        }
+    }
+}
+@media (max-width:725px){
+    .container{
+        flex-direction: column;
+        place-items: center;
+    }
+    .preview{
+        width: 60%;
+        
+    }
+   
+}

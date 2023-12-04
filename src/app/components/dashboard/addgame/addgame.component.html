@@ -1,0 +1,31 @@
+<form [formGroup]="gameForm" (ngSubmit)="submitForm()">
+  <span *ngIf="invalidForm" class="errorAlert">ONLY 5 STARTERS</span>
+  <label for="teamA">Team A
+    <span *ngIf="submitted && gameForm.get('teamA')?.hasError('required')">
+      Este campo es requerido
+    </span>
+  </label>
+  <select id="teamA" name="teamA" formControlName="teamA" (change)="loadTeamPlayers()">
+    <option value="" selected>Choose a team</option>
+    <ng-container *ngFor="let team of teams">
+      <option value="{{team.name}}">{{team.name}}</option>
+    </ng-container>
+  </select>
+
+  <label for="a_Starters">a_Starters
+    <span *ngIf="submitted && gameForm.get('a_Starters')?.hasError('required')">
+      Este campo es requerido
+    </span>
+
+  </label>
+  <select id="a_Starters" #a_starters formControlName="a_Starters" *ngIf="teamPlayers && teamPlayers.length>0" multiple
+    style="height: 200px;">
+    <option value="" selected>5 starters (use Ctrl key)</option>
+    <ng-container *ngFor="let player of teamPlayers">
+      <option value="{{player._id}}" #selectedPlayer (click)="handleStarters(selectedPlayer)">{{player.name}}
+        {{player.lastname}}</option>
+    </ng-container>
+  </select>
+
+
+</form>

@@ -1,0 +1,35 @@
+*{
+  margin: 0px;
+ 
+}
+.breadcrumb {
+    background: none;
+    font-size: 0.8em;
+    margin-left: 15%;
+    height: 20px;
+    a,
+    span {
+      color: rgb(10, 10, 10);
+    }
+    a:hover,
+    span:hover {
+      color: dimgrey;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    li {
+      list-style: none;
+      float: left;
+      margin: 1px;
+    }
+    li:last-child {
+      margin-right: 20px;
+    }
+    li::after {
+      content: "->";
+      color: rgb(10, 10, 10);
+    }
+    li:last-child::after {
+      content: "";
+    }
+  }
